@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bricolage Grotesque — Display / Headlines */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* General Sans — Body */
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Cabinet Grotesk — Accent / Numbers */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Control Roofing — Charcoal & Safety Orange palette */
+    /* Safety Orange: oklch(0.72 0.22 48) */
+    /* Deep Orange: oklch(0.62 0.20 48) */
+    /* Charcoal: oklch(0.22 0.01 260) */
+    /* Near-black: oklch(0.14 0.01 260) */
+    /* Off-white: oklch(0.98 0 0) */
+    /* Light gray: oklch(0.94 0.005 260) */
+
+    --background: 0.98 0 0;
+    --foreground: 0.14 0.01 260;
+
+    --card: 1 0 0;
+    --card-foreground: 0.14 0.01 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.14 0.01 260;
+
+    /* Primary = Safety Orange */
+    --primary: 0.72 0.22 48;
+    --primary-foreground: 1 0 0;
+
+    /* Secondary = Charcoal */
+    --secondary: 0.22 0.01 260;
+    --secondary-foreground: 0.98 0 0;
+
+    --muted: 0.94 0.005 260;
+    --muted-foreground: 0.45 0.01 260;
+
+    --accent: 0.72 0.22 48;
+    --accent-foreground: 1 0 0;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.005 260;
+    --input: 0.88 0.005 260;
+    --ring: 0.72 0.22 48;
+
+    --chart-1: 0.72 0.22 48;
+    --chart-2: 0.62 0.20 48;
+    --chart-3: 0.22 0.01 260;
+    --chart-4: 0.45 0.01 260;
+    --chart-5: 0.94 0.005 260;
+
+    --sidebar: 0.22 0.01 260;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.72 0.22 48;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.30 0.01 260;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.30 0.01 260;
+    --sidebar-ring: 0.72 0.22 48;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .diagonal-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      oklch(0.72 0.22 48 / 0.15) 8px,
+      oklch(0.72 0.22 48 / 0.15) 12px
+    );
+  }
+
+  .text-orange {
+    color: oklch(0.72 0.22 48);
+  }
+
+  .bg-orange {
+    background-color: oklch(0.72 0.22 48);
+  }
+
+  .bg-orange-dark {
+    background-color: oklch(0.62 0.20 48);
+  }
+
+  .bg-charcoal {
+    background-color: oklch(0.22 0.01 260);
+  }
+
+  .bg-near-black {
+    background-color: oklch(0.14 0.01 260);
+  }
+
+  .border-orange {
+    border-color: oklch(0.72 0.22 48);
+  }
+
+  .hover-orange:hover {
+    background-color: oklch(0.62 0.20 48);
+  }
+
+  /* Service card hover — orange top reveal */
+  .service-card {
+    position: relative;
+  }
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: oklch(0.72 0.22 48);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .service-card:hover::before {
+    transform: scaleX(1);
+  }
+}
